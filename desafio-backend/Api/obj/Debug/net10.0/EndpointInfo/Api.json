@@ -1,0 +1,110 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Api",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Titulos": {
+      "post": {
+        "tags": [
+          "Titulos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTituloDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTituloDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTituloDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Titulos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateParcelaDto": {
+        "type": "object",
+        "properties": {
+          "numeroParcela": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dataVencimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valor": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTituloDto": {
+        "type": "object",
+        "properties": {
+          "numeroTitulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeDevedor": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpfDevedor": {
+            "type": "string",
+            "nullable": true
+          },
+          "percentualJuros": {
+            "type": "number",
+            "format": "double"
+          },
+          "percentualMulta": {
+            "type": "number",
+            "format": "double"
+          },
+          "parcelas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateParcelaDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Titulos"
+    }
+  ]
+}
