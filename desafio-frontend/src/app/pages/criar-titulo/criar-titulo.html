@@ -1,0 +1,82 @@
+<div class="container">
+
+  <h2>Novo Título</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Número do Título</mat-label>
+      <input matInput formControlName="numeroTitulo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do Devedor</mat-label>
+      <input matInput formControlName="nomeDevedor">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpfDevedor">
+    </mat-form-field>
+
+    <div class="row">
+
+      <mat-form-field appearance="outline">
+        <mat-label>% Juros</mat-label>
+        <input matInput type="number" formControlName="percentualJuros">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>% Multa</mat-label>
+        <input matInput type="number" formControlName="percentualMulta">
+      </mat-form-field>
+
+    </div>
+
+    <hr>
+
+    <div class="parcelas-header">
+      <h3>Parcelas</h3>
+
+      <button mat-raised-button color="primary" type="button" (click)="addParcela()">
+        + Adicionar Parcela
+      </button>
+    </div>
+
+    <div formArrayName="parcelas">
+
+      <div
+        *ngFor="let p of parcelas.controls; let i = index"
+        [formGroupName]="i"
+        class="parcela">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nº Parcela</mat-label>
+          <input matInput formControlName="numeroParcela">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Data Vencimento</mat-label>
+          <input matInput type="date" formControlName="dataVencimento">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Valor</mat-label>
+          <input matInput type="number" formControlName="valor">
+        </mat-form-field>
+
+        <button mat-button color="warn" type="button" (click)="removeParcela(i)">
+          Remover
+        </button>
+
+      </div>
+
+    </div>
+
+    <button mat-raised-button color="accent" type="submit">
+      Salvar Título
+    </button>
+
+  </form>
+
+</div>

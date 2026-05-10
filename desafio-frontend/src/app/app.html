@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+
+  <span>Sistema de Títulos</span>
+
+  <span class="spacer"></span>
+
+  <button
+    mat-button
+    routerLink="/titulos">
+    Listagem
+  </button>
+
+  <button
+    mat-raised-button
+    color="accent"
+    routerLink="/novo-titulo">
+    Novo Título
+  </button>
+
+</mat-toolbar>
+
+<div class="page-container">
+  <router-outlet></router-outlet>
+</div>
