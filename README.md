@@ -36,22 +36,31 @@ O objetivo do projeto é demonstrar conhecimento em backend .NET, frontend Angul
 
 ---
 
-# Como rodar
 
-1 - Acessar a pasta do backend
-2 - Restaurar as dependências 
-    - dotnet restore
-3 - Criar banco SQLite (migrations)
-    - dotnet ef migrations add InitialCreate
-4 - Atualizar banco de dados
+# Como rodar com docker
+
+- Clonar o projeto e acessar
+    - cd desafio-fullstack
+- Subir toda a aplicação
+    - docker compose up --build
+- Acessar a aplicação 
+    - Front: http://localhost:4200 ou http://localhost:4200/titulos
+    - Back: http://localhost:8080/swagger
+
+
+# Como rodar localmente
+
+- Acessar a pasta do backend
+- Restaurar as dependências 
+- Criar banco SQLite (migrations)
+- Atualizar banco de dados
     - dotnet ef database update
-5 - Executar API
+- Rodar
     - dotnet run
 
-6- Instalar as dependências no front e rodar
-npm install
-ng serve
-
+- Instalar as dependências no front e rodar
+    -npm install
+    -ng serve
 
 
 # Pré-requisitos

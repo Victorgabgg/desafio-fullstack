@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Docker
+builder.WebHost.UseUrls("http://0.0.0.0:8080");
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -36,11 +39,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
 }
+
+app.UseSwagger();
+    app.UseSwaggerUI();
 
 app.UseCors("AllowAngular");
 
